@@ -1,4 +1,6 @@
 const ftp = require("basic-ftp");
+const fs = require("fs");
+
 require("dotenv").config();
 
 example()
@@ -15,6 +17,8 @@ async function example() {
         })
         await client.cd(process.env.DEFAULT_FOLDER);
 
+        await client.upload(fs.createReadStream("test/to_upload.txt"), "uploaded.txt");
+        await client.download(fs.createWriteStream("test/downloaded.txt"), "README.txt", 0);
         console.log(await client.list())
     }
     catch(err) {
