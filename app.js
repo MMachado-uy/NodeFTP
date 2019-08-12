@@ -1,6 +1,6 @@
 const ftp = require("basic-ftp");
 require("dotenv").config();
-console.log(process.env)
+
 example()
  
 async function example() {
